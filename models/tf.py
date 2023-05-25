@@ -115,7 +115,7 @@ class TFDWConvTranspose2d(keras.layers.Layer):
         # ch_in, ch_out, weights, kernel, stride, padding, groups
         super().__init__()
         assert c1 == c2, f'TFDWConv() output={c2} must be equal to input={c1} channels'
-        assert k == 4 and p1 == 1, 'TFDWConv() only valid for k=4 and p1=1'
+        assert k == 4 and p1 == 1, 'TFDWConv() only val for k=4 and p1=1'
         weight, bias = w.weight.permute(2, 3, 1, 0).numpy(), w.bias.numpy()
         self.c1 = c1
         self.conv = [
@@ -396,8 +396,8 @@ def parse_model(d, ch, model, imgsz):  # model_dict, input_channels(3)
 
         n = max(round(n * gd), 1) if n > 1 else n  # depth gain
         if m in [
-                nn.Conv2d, Conv, DWConv, DWConvTranspose2d, Bottleneck, SPP, SPPF, MixConv2d, Focus, CrossConv,
-                BottleneckCSP, C3, C3x]:
+            nn.Conv2d, Conv, DWConv, DWConvTranspose2d, Bottleneck, SPP, SPPF, MixConv2d, Focus, CrossConv,
+            BottleneckCSP, C3, C3x]:
             c1, c2 = ch[f], args[0]
             c2 = make_divisible(c2 * gw, 8) if c2 != no else c2
 

@@ -1,0 +1,5 @@
+train: ../datasets/cloud2/train/images
+val: ./datasets/cloud2/valid/images
+
+nc: 1
+names: [ 'cloud' ]
